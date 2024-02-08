@@ -110,7 +110,7 @@ for (let x=1; x<finances.length; x++){
   changes.push(change);
 
 
-// get the GreatestIncrease 
+// get the GreatestIncrease in all the months
 if (change>greatestincrease){
   greatestincrease=change;
   startmonth=finances[x-1][0];
