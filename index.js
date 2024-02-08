@@ -88,4 +88,44 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
+// Count the total number of  months 
+let len = finances.length;
+console.log("Total Months:"+len);
+//Calculate the total Sum 
+let total = 0;
+for (let i = 0; i < finances.length; i++) {
+  total += finances[i][1];
+}
+console.log("Total:=",total);
+// The average of the changes in Profit/Los over the entrie period 
+const changes=[];
+let greatestincrease=0;
+let greatestdecrease=0;
+let startmonth="";
+let endmonth="";
+for (let x=1; x<finances.length; x++){
+  const current=finances[x][1];
+  const previous =finances[x-1][1];
+  const change =current-previous;
+  changes.push(change);
+
+
+// get the GreatestIncrease 
+if (change>greatestincrease){
+  greatestincrease=change;
+  startmonth=finances[x-1][0];
+  endmonth=finances[x][0];
+}
+// Get the greatestdecrease
+if (change<greatestdecrease){
+  greatestdecrease=change;
+  startmonth=finances[x-1][0];
+  endmonth=finances[x][0];
+}
+}
+const averagechange=changes.reduce((sum,change)=>sum+change,0)/changes.length;
+console.log("Average Change:",averagechange);
+
+console.log("Greatest Increase in Profits/Losses:", greatestincrease,"from",startmonth,"to",endmonth);
+console.log("Greatest Decrease in Profits/Losses:", greatestdecrease,"from",startmonth,"to",endmonth);
 
